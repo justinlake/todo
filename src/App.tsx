@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
 const App: React.FC = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
+
+    useEffect(() => {
+        const todos = JSON.parse(localStorage.getItem('todos')!);
+        if (todos) {
+            setTodos(todos);
+        }
+    }, []);
 
     const handleCreate = (todo: Todo) => {
         setTodos([...todos, todo]);
@@ -14,6 +21,10 @@ const App: React.FC = () => {
         setTodos(newTodo);
     };
 
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
+    
     const handleComplete = (id: string) => {
         const newTodos: Todo[] = [...todos];
         
