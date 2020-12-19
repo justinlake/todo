@@ -3,3 +3,8 @@ interface Todo {
     id: string;
     name: string;
 };
+
+interface TodoForm {
+    handleCreate: (todo: Todo) => void;
+    todos: Todo[];
+};

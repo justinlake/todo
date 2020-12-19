@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import TodoForm from './components/TodoForm';
+const App: React.FC = () => {
+    const [todos, setTodos] = useState<Todo[]>([]);
 
-function App() {
+    const handleCreate = (todo: Todo) => {
+        setTodos([...todos, todo]);
+    };
+
   return (
-    <h1>Hello World</h1>
+        <div className="todo-app">
+            <TodoForm
+                handleCreate={ handleCreate }
+                todos={ todos }
+            />
+        </div>
   );
-}
+};
 
 export default App;
