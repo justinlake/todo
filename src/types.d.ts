@@ -8,3 +8,9 @@ interface TodoForm {
     handleCreate: (todo: Todo) => void;
     todos: Todo[];
 };
+
+interface TodoItem {
+    handleComplete: (id: string) => void;
+    handleRemove: (id: string) => void;
+    todo: Todo; 
+};
