@@ -1,0 +1,100 @@
+@import '~bootstrap-scss/bootstrap.scss';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+body {
+    background-color: #eee;
+}
+
+.todo-app {
+    background-color: #fff;
+    border: 1px solid #888;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(#000, 0.15);
+    margin: 2rem 1rem;
+    max-width: 720px;
+    padding: 2rem;
+
+    @include media-breakpoint-up(md) {
+        margin: 2rem auto;
+    }
+
+    .todo-item {
+        align-items: center;
+        display: flex;
+
+        .item-checkbox {
+            &:focus {
+                + .item-label {
+                    &::before {
+                        box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+                    }
+                }
+            }
+        }
+
+        .item-label {
+            line-height: 2rem;
+            margin: 0;
+            padding-left: 3rem;
+            position: relative;
+
+            &::before {
+                background-color: #fff;
+                border: 1px solid #888;
+                border-radius: 0.25rem;
+                content: '';
+                display: block;
+                height: 2rem;
+                left: 0;
+                position: absolute;
+                top: 0;
+                transition: border-color 0.15s eas-in-out, box-shadow 0.15s ease-in-out;
+                width: 2rem;
+            }
+        }
+
+        &.complete {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+
+            .item-checkbox {
+                &:focus {
+                    + .item-label {
+                        &::before {
+                            background-color: #218838;
+                            border-color: #1e7e34;
+                            box-shadow: 0 0 0 0.2rem rgba(72, 180, 97, 0.5);
+                        }
+                    }
+                }
+            }
+
+            .item-label {
+                text-decoration: line-through;
+
+                &::before {
+                    background-color: #28a745;
+                }
+
+                &::after {
+                    content: url(
+                        'data:image/svg+xml; utf8,\
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="%23fff" viewBox="0 0 16 16">\
+                            <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>\
+                        </svg>'
+                    );
+                    display: block;
+                    left: 4px;
+                    position: absolute;
+                    top: 5px;
+                }
+            }
+        }
+
+        .remove-item-button {
+            align-self: flex-start;
+            margin-left: auto;
+        }
+    }
+}

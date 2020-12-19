@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
+import './app.scss';
+
 const App: React.FC = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
 
@@ -36,7 +38,7 @@ const App: React.FC = () => {
         setTodos(newTodos)
     };
 
-  return (
+    return (
         <div className="todo-app">
             { !!todos.length &&
                 <TodoList
@@ -50,7 +52,7 @@ const App: React.FC = () => {
                 todos={ todos }
             />
         </div>
-  );
+    );
 };
 
 export default App;
