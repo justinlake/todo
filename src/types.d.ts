@@ -19,3 +19,9 @@ interface TodoItem {
     handleRemove: (id: string) => void;
     todo: Todo; 
 };
+
+interface TodoList {
+    handleComplete: (id: string) => void;
+    handleRemove: (id: string) => void;
+    todos: Todo[]; 
+};

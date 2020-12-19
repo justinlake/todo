@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+
 const App: React.FC = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
 
@@ -25,6 +27,13 @@ const App: React.FC = () => {
 
   return (
         <div className="todo-app">
+            { !!todos.length &&
+                <TodoList
+                    handleRemove={ handleRemove }
+                    handleComplete={ handleComplete }
+                    todos={ todos }
+                />
+            }
             <TodoForm
                 handleCreate={ handleCreate }
                 todos={ todos }
