@@ -4,6 +4,11 @@ interface Todo {
     name: string;
 };
 
+interface TodoFilter {
+    handleChange: function;
+    searchTerm: string;
+}
+
 interface TodoForm {
     handleCreate: (todo: Todo) => void;
     todos: Todo[];
