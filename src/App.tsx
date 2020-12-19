@@ -7,6 +7,22 @@ const App: React.FC = () => {
         setTodos([...todos, todo]);
     };
 
+    const handleRemove = (id: string) => {
+        const newTodo: Todo[] = todos.filter((todo: Todo) => todo.id !== id);
+        setTodos(newTodo);
+    };
+
+    const handleComplete = (id: string) => {
+        const newTodos: Todo[] = [...todos];
+        
+        newTodos.find(
+            (todo: Todo) => todo.id === id
+        )!.complete = !newTodos.find(
+            (todo: Todo) => todo.id === id
+        )!.complete;
+        setTodos(newTodos)
+    };
+
   return (
         <div className="todo-app">
             <TodoForm
